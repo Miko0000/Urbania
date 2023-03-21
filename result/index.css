@@ -15,8 +15,8 @@ body {
 	position: relative;
 	overflow: hidden;
 
-	font-family: monospace;
-	font-size: 16px;
+	font-family: VT323, Major Mono Display, monospace;
+	font-size: 24px;
 }
 
 body > .content {
@@ -42,7 +42,9 @@ body > .content > .l > * {
 	padding: 1%;
 	padding-top: 1px;
 	padding-bottom: 3px;
-	margin: 1%;
+	margin: 2%;
+	margin-bottom: 4%;
+	color: rgb(180, 180, 180);
 }
 
 body > .content > .l > *:hover {
@@ -52,6 +54,7 @@ body > .content > .l > *:hover {
 	padding: 1%;
 	padding-top: 2px;
 	padding-bottom: 2px%;
+	color: rgb(255, 255, 255);
 }
 
 body > .content > .l > *:active {
@@ -61,16 +64,45 @@ body > .content > .l > *:active {
 	padding: 1%;
 	padding-top: 3px;
 	padding-bottom: 1px;
+	color: rgb(100, 255, 100);
+}
+
+body > .content > .l-b {
+	top: 90%;
+	width: 30%;
+	height: 10%;
+	border-top: 1px solid rgb(8, 8, 8);
+	padding: 1%;
+	font-size: 80%;
+	text-align: center;
+	color: rgb(125, 255, 125);
 }
 
 body > .content > .r {
 	/*border: 2px solid yellow;*/
+	border: none;
 	width: 70%;
 	left: 30%;
+	height: 95%;
+	top: 5%;
+
+	color: white;
 }
 
-body > .content > .r > * > p {
-	margin-left: 5%;
-	max-width: 60%;
-	word-break: break-word;
+body > .content > .r-t {
+	background-color: rgb(36, 36, 36);
+	width: 100%;
+	left: 30%;
+	height: 5%;
+	padding-left: 1%;
+}
+
+body > .content > .r-t > div {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+body > .content > .r body {
+	color: white;
 }

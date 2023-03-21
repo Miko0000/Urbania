@@ -1,4 +1,8 @@
 <?php
+	if(php_sapi_name() == "cli"){
+		return ;
+	}
+
 	$uri = $_SERVER["REQUEST_URI"];
 	include "." . substr($uri, strlen("/urbania/source"));
 
