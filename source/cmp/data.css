@@ -1,0 +1,18 @@
+body {
+	color: white;
+	font-family: VT323;
+	font-size: 3.4vmin;
+}
+
+h1 {
+	font-family: Major Mono Display;
+}
+
+pre {
+	font-family: VT323;
+}
+
+p {
+	max-height: 90%;
+	word-break: break-word;
+}

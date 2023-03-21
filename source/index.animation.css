@@ -1,0 +1,360 @@
+.intro._1 {
+	position: absolute;
+
+	left: 50%;
+	top: 50%;
+
+	width: 80vmin;
+	height: 80vmin;
+
+	transform: translate(-50%, -50%);
+
+	animation-name: intro;
+	animation-delay: 4;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
+
+.intro .layer {
+	position: absolute;
+
+	filter: invert(100%);
+
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+
+	opacity: 0;
+}
+
+@keyframes intro {
+	0% {
+		opacity: 0.8;
+	}
+
+	50% {
+		opacity: 1.0;
+	}
+
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes intro_layer_1 {
+	0% {
+		/*transform: rotate(-30deg);*/
+		transform: rotate(90deg);
+		transition: transform 0.3s;
+
+		opacity: 0.1;
+	}
+
+	20% {
+		opacity: 0.4;
+	}
+
+	40% {
+		opacity: 0.1;
+	}
+
+	60% {
+		transform: rotate(90deg);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: rotate(0deg);
+		opacity: 0.8;
+	}
+}
+
+@keyframes intro_layer_2 {
+	0% {
+		opacity: 0;
+		transform: rotate(90deg);
+	}
+
+	100% {
+		opacity: 0.8;
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes intro_layer_3 {
+	0% {
+		opacity: 0;
+		transform: rotate(-30deg);
+	}
+
+	20% {
+		opacity: 0.8;
+	}
+
+	100% {
+		opacity: 0.8;
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes intro_layer_4 {
+	0% {
+		opacity: 0;
+		transform: scale(200%);
+	}
+
+	20% {
+		opacity: 0.8;
+		transform: scale(100%);
+	}
+
+	30% {
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 0.8;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes intro_layer_7 {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
+.intro .layer._1 {
+	background-image: url(res/crux/1.png);
+
+	animation-name: intro_layer_1;
+	animation-duration: 2s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+}
+
+.intro .layer._2 {
+	background-image: url(res/crux/1.png);
+	animation-name: intro_layer_2;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: 1s;
+}
+
+.intro .layer._3 {
+	background-image: url(res/crux/3.png);
+	animation-name: intro_layer_3;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+.intro .layer._4 {
+	background-image: url(res/crux/4.png);
+	animation-name: intro_layer_4;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+.intro .layer._5 {
+	background-image: url(res/crux/6.png);
+	animation-name: intro_layer_4;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+.intro .layer._6 {
+	background-image: url(res/crux/7.png);
+	animation-name: intro_layer_4;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+.intro .layer._7 {
+	background-image: url(res/crux/8.png);
+	animation-name: intro_layer_7;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+}
+
+@keyframes intro_2_1 {
+	0% {
+		opacity: 0;
+	}
+
+	1% {
+		opacity: 0;
+		height: auto;
+	}
+
+	5% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+		height: auto;
+	}
+}
+
+@keyframes intro_2_2 {
+	0% {
+
+	}
+
+	1% {
+		font-size: 16px;
+	}
+
+	100% {
+		font-size: 16px;
+	}
+}
+
+@keyframes intro_2_3 {
+	0% {
+		height: 0%;
+		opacity: 1;
+		filter: invert(20%);
+	}
+
+	1% {
+
+	}
+
+	100% {
+		height: 100%;
+		opacity: 1;
+		filter: invert(0%);
+	}
+}
+
+.intro._2 {
+	font-family: monospace;
+	font-size: 24px;
+
+	animation-name: intro_2_2;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-delay: 5s;
+	font-family: VT323;
+}
+
+.intro._2 * {
+	height: 0px;
+	overflow-y: hidden;
+	/*border: thin solid red;*/
+	animation-name: intro_2_1;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.intro._2 *.ok {
+	color: lightGreen;
+}
+
+.intro._2 .sp1 {
+	animation-name: intro_2_1;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-delay: 0s;
+}
+
+.intro._2 .sp2 {
+	animation-delay: 2s;
+	animation-duration: 2s;
+	animation-fill-mode: none;
+}
+
+.intro._2 .sp3 {
+	animation-delay: 4s;
+}
+
+.intro._2 .sp4 {
+	animation-delay: 2s;
+	animation-duration: 3s;
+	animation-fill-mode: none;
+}
+
+.intro._2 .sp5 {
+	animation-delay: 5s;
+}
+
+.intro._2 .sp6 {
+	animation-delay: 2s;
+	animation-duration: 4s;
+	animation-fill-mode: none;
+}
+
+.intro._2 .sp7 {
+	animation-delay: 6s;
+}
+
+.intro._2 .sp8 {
+	animation-duration: 6s;
+	animation-fill-mode: none;
+	animation-delay: 2s;
+}
+
+.intro._2 .sp9 {
+	animation-delay: 8s;
+}
+
+.intro._2 .sp10 {
+	animation-delay: 2s;
+	animation-duration: 5s;
+	animation-fill-mode: none;
+}
+
+.intro._2 .sp11 {
+	animation-delay: 7s;
+}
+
+.intro._2 .sp12 {
+	animation-delay: 2s;
+}
+
+.content {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	opacity: 0%;
+	width: 100%;
+	height: 0%;
+}
+
+.content {
+	background-color: rgb(16, 16, 16);
+
+	animation-name: intro_2_3;
+	animation-delay: 9s;
+	animation-fill-mode: forwards;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+}

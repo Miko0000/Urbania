@@ -1,0 +1,13 @@
+body {
+	position: absolute;
+
+	width: 90vh;
+	height: 100vw;
+
+	top: 50%;
+
+	transform: rotate(90deg) translate(-50%, -100%);
+	transform-origin: top left;
+	border: 2px solid rgb(36, 36, 36) !important;
+	font-size: 16px;
+}

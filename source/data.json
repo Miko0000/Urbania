@@ -1,0 +1,7 @@
+[
+		{ "_class": "welcome", "content": "Welcome" },
+		{ "_class": "structures", "content": "Structures" },
+		{ "_class": "entities", "content": "Entities" },
+		{ "_class": "identities", "content": "Identities" },
+		{ "_class": "log", "content": "Log" }
+]
