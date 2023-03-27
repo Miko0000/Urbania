@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>LCrux 21</title>
+
+		<link rel="stylesheet" href=".cmp/data.css" />
+		<link rel="stylesheet" href=".cmp/data.portrait.css" media="(orientation: portrait)"/>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Major+Mono+Display" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323" />
+
+		<script src=".cmp/fx/slowType1.js" defer></script>
+		<script src=".cmp/data.js" defer></script>
+	</head>
+	<body>
+<h1>Identities</h1>
+<h2>Scan</h2>
+<p>Scan a character-sheet</p>
+<div class="file-reader">
+	<button class="choose"><label>
+		<input type="file" class="chooser" multiple/>
+		Add files
+	</label></button>
+	<div class="list">
+		<div class="template list-item">
+			<span class="name"></span>
+			<button class="remove-item"></button>
+		</div>
+	</div>
+	<button class="process character-sheet">Scan</button>
+</div>
+<div class="character-sheet-preview"></div>
+
+<script>
+	function b64EncodeUnicode(str){
+		return btoa(encodeURIComponent(str));
+	}
+
+	function UnicodeDecodeB64(str){
+		return decodeURIComponent(atob(str));
+	}
+
+	async function FSheetReader(file){
+		file = await file.text();
+		let res = Object.fromEntries(file
+			.split('\n-')
+			.map(e => {
+				let a = e.split(':');
+				return [ a[0], a.slice(1).join(':') ]
+			}
+		).map(e => [ e[0].toLowerCase().trim(), e[1] ]));
+
+		return res;
+	}
+
+	async function SheetReader(ob){
+		const html = (await fetch("identities/template.html")
+			.then(r => r.text())
+		);
+		const doc = new DOMParser().parseFromString(html, "text/html");
+		const sheet = doc.querySelector(".character-sheet");
+
+		//console.log(ob);
+
+		for(const [ entry, value ] of Object.entries(ob)){
+			if(entry === "image")
+				continue ;
+
+			try {
+				sheet
+					.querySelector(`.${entry}`)
+					.querySelector(`.value`)
+					.textContent = value;
+			} catch(err){
+
+			}
+		}
+
+		ob.image = ob.image || "";
+		ob.image = ob.image.split(',');
+
+		for(const url of ob.image){
+			const img = document.createElement("img");
+			img.src = url.trim();
+			sheet.querySelector(".image > div").appendChild(img);
+		}
+
+		return sheet;
+		//console.log(html);
+	}
+</script>
+
+<script>window.addEventListener("load", function(){
+	const preview = document.querySelector(".character-sheet-preview");
+
+	window.UIFileReader.handler["character-sheet"]
+	= async function(input, list){
+		/*alert(Array.from(input.files).map(f => f.name).join('\n'));*/
+		const result = [];
+		//const entries = {};
+
+		for(const file of input.files){
+			const object = await FSheetReader(file);
+			object.special = object.abilities;
+
+			const dom = await SheetReader(object)
+
+			//entries[file.name] = result[result.push(dom) - 1];
+
+			file.listItem.textContent = `${file.name}`;
+
+			const download = document.createElement("a");
+			const button = document.createElement("button");
+			button.textContent = "Download";
+			button.style.borderColor = "green";
+			button.style.color = "lightBlue";
+			download.appendChild(button);
+			download.style.float = "right";
+			download.href = `data:text/html,`
+				+ `<?php include ".cmp/pre.html" ?>`
+				+ `<div class="character-sheet">${encodeURI(dom.innerHTML)}`
+				+ `</div>`
+				+ `<?php include ".cmp/post.html" ?>`
+				;
+			download.download = `${object.name.trim()}.html`;
+
+			file.listItem.appendChild(download);
+			result.push(dom);
+		}
+
+		console.log(result);
+
+		/*const preview = document.querySelector(".character-sheet-preview");
+		preview.src = `data:text/html,${result[0].innerHTML}`;*/
+		preview.textContent = '';
+		if(result[0])
+			preview.appendChild(... result);
+	}
+});</script>
+
+	</body>
+</html>

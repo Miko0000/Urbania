@@ -106,3 +106,28 @@ body > .content > .r-t > div {
 body > .content > .r body {
 	color: white;
 }
+
+
+*::-webkit-scrollbar {
+  display: block;
+  opacity: 0.2;
+  /*background-color: rgba(0, 0, 0, 0.2);*/
+  background-color: rgba(0, 0, 0, 0.0);
+  width: 4px;
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 4px;
+}
+
+*::-webkit-scrollbar-button {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: rgba(255, 255, 255, 0.3);
+}

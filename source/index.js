@@ -42,7 +42,11 @@ async function lload(path){
 	div.classList.add(`${path.split('_').slice(0, -1).join('_') || "data"}`);
 	div.textContent = "<-- Back";
 
-	l.prepend(div);
+	const index = document.createElement("div");
+	index.classList.add(`${path}`);
+	index.textContent = "o-- Index";
+
+	l.prepend(div, index);
 	lload.running = 0;
 }
 
@@ -90,40 +94,8 @@ window.addEventListener("click", async function(ev){
 	r.appendChild(pre);
 });*/
 
-function textLoadAnim(el, text, fps){
-	let i = 0;
-	let nf = Date.now();
-	let random = () => 33 + Math.round(Math.random()*126-33);
-
-	function frame(){
-		//console.count();
-		if(i > text.length){
-			return ;
-		}
-
-		//console.log(i, text.length);
-
-		if(nf > Date.now()){
-			console.log(nf, Date.now());
-			return requestAnimationFrame(frame);
-		}
-
-		nf = Date.now() + Math.floor((1000/fps))
-
-		let c = '';
-		while(c.length < text.length - i){
-			c += String.fromCharCode(random());
-		}
-
-		el.textContent = text.substr(0, i) + c;
-
-		i++;
-		requestAnimationFrame(frame);
-	}
-
-	frame();
-}
-
+(() => {
+let abort;
 window.addEventListener("click", async function(ev){
 	const { target } = ev;
 
@@ -134,9 +106,13 @@ window.addEventListener("click", async function(ev){
 	lload(target.classList[0]);
 	rload(target.classList[0]);
 
-	textLoadAnim(
+	if(abort)
+		abort();
+
+	abort = slowType[1](
 		document.querySelector(".content > .r-t"),
 		target.classList[0],
 		24
 	);
 });
+})();
